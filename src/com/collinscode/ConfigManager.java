@@ -1,5 +1,7 @@
 package com.collinscode;
 
+// none of this works yet
+
 public class ConfigManager {
     String currentCFG;
 

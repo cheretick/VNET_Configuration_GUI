@@ -18,5 +18,10 @@ public class Main {
 
        Hub hub1 = new Hub("hub1", hub1Inf, "192.168.10.0", "255.255.255.0");
 
+        System.out.println(host1.outputString());
+        System.out.println(host2.outputString());
+        System.out.println(hub1.outputString());
+
+
     }
 }
