@@ -41,7 +41,7 @@ public class VM {
         System.out.println(this.name + " has been created successfully");
     }
 
-    /* not really usable yet..
+
     public String addConnection(String port, String connection) {
         if (connections.get(port) != null) {
             return "Port is already in use";
@@ -50,16 +50,32 @@ public class VM {
         } return null;
     }
 
-     */
+    public void removeConnection(String port) {
+        connections.remove(port);
+    }
 
     public String outputString() {
         String output = "";
         output += "vm " + this.name + " { \n\t\tos: " + this.os + "\n\t\tver : \"" + this.ver
                 + "\"\n\t\tsrc : \"" + this.src + "\"\n\t\teth0 : \"" + this.eth0 + "\"";
-        if (this.eth1 != null) { output += "\n\t\teth1 : " + this.eth1 + "\"";}
-        if (this.eth2 != null) { output += "\n\t\teth2 : " + this.eth2 + "\"";}
+        if (this.eth1 != null) { output += "\n\t\teth1 : \"" + this.eth1 + "\"";}
+        if (this.eth2 != null) { output += "\n\t\teth2 : \"" + this.eth2 + "\"";}
         output += "\n}\n";
             return output;
+    }
+
+    public String outputPartialSolutionString() {
+        String output = "";
+        int count = 0;
+        for (String port: connections.keySet()) {
+            count++;
+            output += "(" + this.name + "." + port + " " + connections.get(port) + ")";
+            if (connections.size() != count) {
+                output += ",\n";
+            }
+            output += "";
+        }
+        return output;
     }
 
 
