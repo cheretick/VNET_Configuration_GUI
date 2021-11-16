@@ -52,6 +52,7 @@ public class VM {
 
     public void removeConnection(String port) {
         connections.remove(port);
+        System.out.println(port + " has been disconnected");
     }
 
     public String outputString() {
