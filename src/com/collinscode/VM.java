@@ -3,33 +3,37 @@ package com.collinscode;
 import java.util.HashMap;
 
 public class VM {
+    Network network;
     String name, os, ver, src, eth0, eth1, eth2;
     HashMap<String, String> connections = new HashMap<>();
 
     // There are three constructors, so you can initialize a VM with 1, 2, or 3 ethernet interfaces
-
-    VM(String name, String os, String ver, String src, String eth0) {
+    VM(String name, String os, String ver, String src, String eth0, Network network) {
         this.name = name;
         this.os = os;
         this.ver = ver;
         this.src = src;
         this.eth0 = eth0;
+        this.network = network;
+        network.addVM(this);
 
         System.out.println(this.name + " has been created successfully");
     }
 
-    VM(String name, String os, String ver, String src, String eth0, String eth1) {
+    VM(String name, String os, String ver, String src, String eth0, String eth1, Network network) {
         this.name = name;
         this.os = os;
         this.ver = ver;
         this.src = src;
         this.eth0 = eth0;
         this.eth1 = eth1;
+        this.network = network;
+        network.addVM(this);
 
         System.out.println(this.name + " has been created successfully");
     }
 
-    VM(String name, String os, String ver, String src, String eth0, String eth1, String eth2) {
+    VM(String name, String os, String ver, String src, String eth0, String eth1, String eth2, Network network) {
         this.name = name;
         this.os = os;
         this.ver = ver;
@@ -37,6 +41,8 @@ public class VM {
         this.eth0 = eth0;
         this.eth1 = eth1;
         this.eth2 = eth2;
+        this.network = network;
+        network.addVM(this);
 
         System.out.println(this.name + " has been created successfully");
     }

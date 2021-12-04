@@ -1,16 +1,20 @@
 package com.collinscode;
 
+import java.awt.image.AffineTransformOp;
 import java.util.ArrayList;
 
 public class Hub {
     String name, subnet, netmask;
+    Network network;
     ArrayList<String> inf;
 
-    Hub(String name, ArrayList<String> inf, String subnet, String netmask) {
+    Hub(String name, ArrayList<String> inf, String subnet, String netmask, Network network) {
         this.name = name;
         this.inf = inf;
         this.subnet = subnet;
         this.netmask = netmask;
+        this.network = network;
+        network.addHub(this);
 
         System.out.println(this.name + " has been created successfully");
     }
@@ -24,7 +28,7 @@ public class Hub {
                 output += ", ";
             }
         }
-        output += "\n\t\tsubnet : \"" + this.subnet + "\"\n\t\tnetmask : \"" + this.netmask + "\n}\n";
+        output += "\n\t\tsubnet : \"" + this.subnet + "\"\n\t\tnetmask : \"" + this.netmask + "\"\n}\n";
         return output;
     }
 

@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Parser {
 
-    public void readFile (String filePath) throws FileNotFoundException {
+    public void readFile (String filePath, Network network) throws FileNotFoundException {
         Scanner input = new Scanner(new File(filePath));
         String[] lineRead;
         String[] infSplit = null;
@@ -74,13 +74,13 @@ public class Parser {
                 //System.out.println(vmName + " " + os + " " + ver + " "
                 //        + src + " " + eth0 + " " + eth1 + " " + eth2); //used for debugging
                 if (eth2 != "") {
-                    VM item = new VM(vmName, os, ver, src, eth0, eth1, eth2);
+                    VM item = new VM(vmName, os, ver, src, eth0, eth1, eth2, network);
                     vmMap.put(vmName, item);
                 } else if (eth1 != "" && eth2 == "") {
-                    VM item = new VM(vmName, os, ver, src, eth0, eth1);
+                    VM item = new VM(vmName, os, ver, src, eth0, eth1, network);
                     vmMap.put(vmName, item);
                 } else {
-                    VM item = new VM(vmName, os, ver, src, eth0);
+                    VM item = new VM(vmName, os, ver, src, eth0, network);
                     vmMap.put(vmName, item);
                 }
 
@@ -126,7 +126,10 @@ public class Parser {
                     lineRead = input.nextLine().split(" ");
                 }
 
-                Hub item = new Hub(hubName, hubInfList, subnet, netmask);
+                ArrayList hubInfListClone = new ArrayList();
+                hubInfListClone = (ArrayList) hubInfList.clone();
+
+                Hub item = new Hub(hubName, hubInfListClone, subnet, netmask, network);
                 hubInfList.clear();
 
             } else if (lineRead[0].contains("partial_solution")){

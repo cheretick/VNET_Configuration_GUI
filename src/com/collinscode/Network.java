@@ -1,9 +1,12 @@
 package com.collinscode;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Network {
     String name, filePath;
+    ArrayList<VM> vmList = new ArrayList<>();
+    ArrayList<Hub> hubList = new ArrayList<>();
 
     Network(String name, String filePath) {
         this.name = name;
@@ -24,5 +27,21 @@ public class Network {
 
     public String getFilePath() {
         return filePath;
+    }
+
+    public ArrayList<VM> getVMList() {
+        return vmList;
+    }
+
+    public ArrayList<Hub> getHubList() {
+        return hubList;
+    }
+
+    public void addVM(VM vm) {
+        vmList.add(vm);
+    }
+
+    public void addHub(Hub hub) {
+        hubList.add(hub);
     }
 }
