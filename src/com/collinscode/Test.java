@@ -7,8 +7,11 @@ import java.util.ArrayList;
 public class Test {
     public void network1ToString() throws IOException {
         // based off of "network1.cfg"
+
+        // creates Network object
         Network network1 = new Network("network1", "C:\\Networks\\");
 
+        // creates VM objects
         VM gemini = new VM("Gemeni", "LINUX", "7.3", "/srv/VMLibrary/JeOS", "192.168.10.3", network1);
         VM nfs = new VM("Nfs", "LINUX", "7.3", "/srv/VMLibrary/JeOS", "192.168.10.2", network1);
         VM intfw = new VM("Intfw", "LINUX", "7.3", "/srv/VMLibrary/JeOS", "192.168.20.2", "192.168.10.1", network1);
@@ -16,12 +19,15 @@ public class Test {
         VM dmz = new VM("Dmz", "LINUX", "7.3", "/srv/VMLibrary/JeOS", "192.168.30.2", network1);
         VM defaultGW = new VM("DefaultGW", "LINUX", "7.3", "/srv/VMLibrary/JeOS", "192.168.40.2", network1);
 
+        // Hub's inf parameter needs to be passed an ArrayList<String> so it must be made ahead of time
         ArrayList<String> hub1Inf = new ArrayList<>();
         hub1Inf.add("Gemini.eth0");
         hub1Inf.add("Nfs.eth0");
         hub1Inf.add("Intfw.eth1");
 
+        // creates Hub object
         Hub hub1 = new Hub("hub1", hub1Inf, "192.168.10.0", "255.255.255.0", network1);
+
 
         ArrayList<String> hub2Inf = new ArrayList<>();
         hub2Inf.add("Extfw.eth2");
@@ -41,6 +47,7 @@ public class Test {
 
         Hub hub4 = new Hub("hub4", hub4Inf, "192.168.40.0", "255.255.255.0", network1);
 
+        // creates connections for the "partial_solution" portion
         gemini.addConnection("Gemini.eth0", "v2.vinf21");
         nfs.addConnection("Nfs.eth0", "v2.vinf21");
         intfw.addConnection("Intfw.eth1", "v2.vinf21");
@@ -51,8 +58,10 @@ public class Test {
         extfw.addConnection("Extfw.eth0", "v2.vinf24");
         defaultGW.addConnection("DefaultGW.eth0", "v2.vinf24");
 
+
         // network1.cfg output
-        //creates configManager object
+
+        // creates configManager object
         ConfigManager configManager = new ConfigManager();
 
         //prints CFG string to console
@@ -99,6 +108,7 @@ public class Test {
     }
 
     public void network() {
+        // this test only tests very basic methods from the Network class
         Network test = new Network("test", "C:\\Networks\\");
         test.setName("Test");
         test.setFilePath("C:\\Networks\\testing\\");
@@ -107,8 +117,15 @@ public class Test {
     }
 
     public void network1FromFile() throws FileNotFoundException {
+        // this test shows how to import from a cfg file
+
+        // creates Network object
         Network network1 = new Network("network1", ".\\network1.cfg");
+
+        // creates ConfigManager object
         ConfigManager configManager = new ConfigManager();
+
+        // this method uses the parser to import the network topology from a cfg file
         configManager.loadCFGtoGUI(network1.getFilePath(), network1);
     }
 
@@ -119,17 +136,17 @@ public class Test {
     }
 
     public void network1FromFileToFile() throws IOException {
-        //network1.cfg input
+        //network1.cfg input (same as Test.network1FromFile()
         Network network1 = new Network("network1", ".\\network1.cfg");
         ConfigManager configManager = new ConfigManager();
         configManager.loadCFGtoGUI(network1.getFilePath(), network1);
 
         // network1.cfg output to test.cfg
 
-        //prints CFG string to console
+        // prints CFG string to console
         System.out.println(configManager.GUItoCFG(network1));
 
-        //saves CFG string to txt file
+        // saves CFG string to txt file
         configManager.saveGUItoCFG(network1,".\\test.cfg");
     }
 

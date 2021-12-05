@@ -16,12 +16,10 @@ public class Parser {
         String[] infSplit = null;
         String[] nameSplit = null;
         HashMap<String, VM> vmMap = new HashMap<>();
-        HashMap<String, Hub> hubMap = new HashMap<>();
         HashMap<String, String> solutionMap = new HashMap<>();
         ArrayList<String> hubInfList = new ArrayList<>();
         String vmName = "", os = "", ver = "", src = "", eth0 = "", eth1 = "",
                 eth2 = "", hubName = "", inf = "", subnet = "", netmask = "", connString = "", connString2 = "";
-        int infCount;
         int infIndex;
 
 
@@ -93,7 +91,6 @@ public class Parser {
             } else if (lineRead[0].contains("hub")) {
                 //System.out.println("hub!!!"); //used for debugging
                 hubName = lineRead[1];
-                infCount = 0;
                 infIndex = 9999999;
                 lineRead = input.nextLine().split(" ");
 

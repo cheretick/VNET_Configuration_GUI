@@ -1,7 +1,6 @@
 package com.collinscode;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Network {
     String name, filePath;
