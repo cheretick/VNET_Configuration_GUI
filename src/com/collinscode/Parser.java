@@ -9,15 +9,16 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Parser {
+    HashMap<String, VM> vmMap = new HashMap<>();
+    HashMap<String, String> solutionMap = new HashMap<>();
+    ArrayList<String> hubInfList = new ArrayList<>();
 
     public void readFile (String filePath, Network network) throws FileNotFoundException {
         Scanner input = new Scanner(new File(filePath));
         String[] lineRead;
         String[] infSplit = null;
         String[] nameSplit = null;
-        HashMap<String, VM> vmMap = new HashMap<>();
-        HashMap<String, String> solutionMap = new HashMap<>();
-        ArrayList<String> hubInfList = new ArrayList<>();
+
         String vmName = "", os = "", ver = "", src = "", eth0 = "", eth1 = "",
                 eth2 = "", hubName = "", inf = "", subnet = "", netmask = "", connString = "", connString2 = "";
         int infIndex;
@@ -159,11 +160,15 @@ public class Parser {
                 //System.out.println("SPACE"); //used for debugging
             }
             else {
-                System.out.println("-unknown-");
+                //System.out.println("-unknown-"); //used for debugging
             }
         }
+    }
 
-
+    public void clearHash() {
+        vmMap.clear();
+        solutionMap.clear();
+        hubInfList.clear();
     }
 
 }

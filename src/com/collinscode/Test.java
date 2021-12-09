@@ -126,20 +126,20 @@ public class Test {
         ConfigManager configManager = new ConfigManager();
 
         // this method uses the parser to import the network topology from a cfg file
-        configManager.loadCFGtoGUI(network1.getFilePath(), network1);
+        configManager.loadCFGtoGUI(network1, network1.getFilePath());
     }
 
     public void network2FromFile() throws FileNotFoundException {
         Network network2 = new Network("network2", ".\\network2.cfg");
         ConfigManager configManager = new ConfigManager();
-        configManager.loadCFGtoGUI(network2.getFilePath(), network2);
+        configManager.loadCFGtoGUI(network2, network2.getFilePath());
     }
 
     public void network1FromFileToFile() throws IOException {
         //network1.cfg input (same as Test.network1FromFile()
         Network network1 = new Network("network1", ".\\network1.cfg");
         ConfigManager configManager = new ConfigManager();
-        configManager.loadCFGtoGUI(network1.getFilePath(), network1);
+        configManager.loadCFGtoGUI(network1, network1.getFilePath());
 
         // network1.cfg output to test.cfg
 
@@ -154,7 +154,7 @@ public class Test {
         //network2.cfg input
         Network network2 = new Network("network2", ".\\network2.cfg");
         ConfigManager configManager = new ConfigManager();
-        configManager.loadCFGtoGUI(network2.getFilePath(), network2);
+        configManager.loadCFGtoGUI(network2, network2.getFilePath());
 
         // network1.cfg output to test.cfg
 

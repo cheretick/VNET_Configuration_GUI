@@ -43,4 +43,9 @@ public class Network {
     public void addHub(Hub hub) {
         hubList.add(hub);
     }
+
+    public void clearLists () {
+        vmList.clear();
+        hubList.clear();
+    }
 }

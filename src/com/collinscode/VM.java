@@ -63,10 +63,10 @@ public class VM {
 
     public String outputString() {
         String output = "";
-        output += "vm " + this.name + " { \n\t\tos: " + this.os + "\n\t\tver : \"" + this.ver
-                + "\"\n\t\tsrc : \"" + this.src + "\"\n\t\teth0 : \"" + this.eth0 + "\"";
-        if (this.eth1 != null) { output += "\n\t\teth1 : \"" + this.eth1 + "\"";}
-        if (this.eth2 != null) { output += "\n\t\teth2 : \"" + this.eth2 + "\"";}
+        output += "vm " + this.name + " {\n        os : " + this.os + "\n        ver : \"" + this.ver
+                + "\"\n        src : \"" + this.src + "\"\n        eth0 : \"" + this.eth0 + "\"";
+        if (this.eth1 != null) { output += "\n        eth1 : \"" + this.eth1 + "\"";}
+        if (this.eth2 != null) { output += "\n        eth2 : \"" + this.eth2 + "\"";}
         output += "\n}\n";
             return output;
     }
@@ -76,7 +76,7 @@ public class VM {
         int count = 0;
         for (String port: connections.keySet()) {
             count++;
-            output += "(" + this.name + "." + port + " " + connections.get(port) + ")";
+            output += "(" +  port + " " + connections.get(port);
             if (connections.size() != count) {
                 output += ",\n";
             }

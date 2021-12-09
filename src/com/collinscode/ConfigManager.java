@@ -44,9 +44,12 @@ public class ConfigManager {
         return CFG;
     }
 
-    void loadCFGtoGUI(String CFGPath, Network network) throws FileNotFoundException {
+    void loadCFGtoGUI(Network network, String filePath) throws FileNotFoundException {
         Parser parser = new Parser();
-        parser.readFile(CFGPath, network);
+        // reset network
+        parser.clearHash();
+        network.clearLists();
+        parser.readFile(filePath, network);
     }
 
     void saveGUItoCFG(Network network, String filePath) throws IOException {

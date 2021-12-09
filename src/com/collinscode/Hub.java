@@ -20,14 +20,14 @@ public class Hub {
 
     public String outputString() {
         String output = "";
-        output += "hub " + this.name + " { \n\t\tinf: ";
+        output += "hub " + this.name + " {\n        inf : ";
         for (int i = 0; i < this.inf.size(); i++) {
             output += this.inf.get(i);
             if (i != this.inf.size() - 1) {
                 output += ", ";
             }
         }
-        output += "\n\t\tsubnet : \"" + this.subnet + "\"\n\t\tnetmask : \"" + this.netmask + "\"\n}\n";
+        output += "\n        subnet : \"" + this.subnet + "\"\n        netmask : \"" + this.netmask + "\"\n}\n";
         return output;
     }
 
