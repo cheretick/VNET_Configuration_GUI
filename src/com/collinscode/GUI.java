@@ -33,9 +33,21 @@ public class GUI extends javax.swing.JFrame implements ActionListener {
         file.add(open);
         file.add(save);
 
+        // bottom panel
+        JPanel bottom = new JPanel();
+        JLabel label = new JLabel("components");
+        JButton addVM = new JButton("Add VM");
+        addVM.addActionListener(this);
+        JButton addHub = new JButton("Add Hub");
+        addHub.addActionListener(this);
+        bottom.add(label);
+        bottom.add(addVM);
+        bottom.add(addHub);
+
 
         // adding components
         frame.getContentPane().add(BorderLayout.NORTH, menuBar);
+        frame.getContentPane().add(BorderLayout.SOUTH, bottom);
         frame.setVisible(true);
     }
 
@@ -79,6 +91,8 @@ public class GUI extends javax.swing.JFrame implements ActionListener {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
+        } else if (com.equals("Add VM")) {
+            VMMenu vmMenu = new VMMenu(network);
         }
 
     }
